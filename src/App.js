@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Item from "./components/Item/item";
+import styles from "./App.module.css";
+import Data from "./services/Data"; // Adjust the import path
 
 function App() {
+  const itemInstance = new Data();
+  const menuItems = itemInstance.menuItems();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={styles.appContainer}>
+        {menuItems.map((item) => (
+          <Item name={item.name} subdetails={item.subdetails} />
+        ))}
+      </div>
     </div>
   );
 }

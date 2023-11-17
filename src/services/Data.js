@@ -31,6 +31,11 @@ export default class Data {
         subdetails:
           "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the",
       },
+      {
+        name: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the",
+        subdetails:
+          "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the",
+      },
     ];
     return items;
   };

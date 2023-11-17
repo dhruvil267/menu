@@ -8,9 +8,34 @@ function App() {
 
   return (
     <div className="App">
+      <div className={styles.title}>Appetizer</div>
       <div className={styles.appContainer}>
         {menuItems.map((item) => (
-          <Item name={item.name} subdetails={item.subdetails} />
+          <Item
+            name={item.name}
+            subdetails={item.subdetails}
+            price={item.price}
+          />
+        ))}
+      </div>
+      <div className={styles.title}>Main Course</div>
+      <div className={styles.appContainer}>
+        {menuItems.map((item) => (
+          <Item
+            name={item.name}
+            subdetails={item.subdetails}
+            price={item.price}
+          />
+        ))}
+      </div>
+      <div className={styles.title}>Desert</div>
+      <div className={styles.appContainer}>
+        {menuItems.map((item) => (
+          <Item
+            name={item.name}
+            subdetails={item.subdetails}
+            price={item.price}
+          />
         ))}
       </div>
     </div>

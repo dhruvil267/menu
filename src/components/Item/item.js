@@ -5,7 +5,7 @@ import styles from "./item.module.css";
 initializeIcons(); // This initializes the default set of Fluent UI icons
 
 function Item(props) {
-  const { name, subdetails } = props;
+  const { name, subdetails,price } = props;
 
   const [count, setCount] = useState(0);
 
@@ -25,6 +25,7 @@ function Item(props) {
         <p className={styles.header}>{name}</p>
         <p className={styles.subtext}>{subdetails}</p>
       </div>
+        <p className={styles.price}>${price}</p>
       <div className={styles.countContainer}>
         <Icon iconName="Remove" onClick={decrement} className={styles.minus} />
         <span className={styles.count}>{count}</span>

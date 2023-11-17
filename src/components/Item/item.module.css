@@ -6,6 +6,8 @@
   border-radius: 10px;
   border-left: 5px solid #0078d4;
   justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
 .itemName {
   display: flex;
@@ -38,4 +40,10 @@
 .minus,
 .plus {
   cursor: pointer;
+}
+.price {
+  margin: 0px;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
 }

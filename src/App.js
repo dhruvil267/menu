@@ -1,45 +1,16 @@
-import Item from "./components/Item/item";
-import styles from "./App.module.css";
-import Data from "./services/Data"; // Adjust the import path
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home/home";
 
-function App() {
-  const itemInstance = new Data();
-  const menuItems = itemInstance.menuItems();
-
+const App = () => {
   return (
-    <div className="App">
-      <div className={styles.title}>Appetizer</div>
-      <div className={styles.appContainer}>
-        {menuItems.map((item) => (
-          <Item
-            name={item.name}
-            subdetails={item.subdetails}
-            price={item.price}
-          />
-        ))}
-      </div>
-      <div className={styles.title}>Main Course</div>
-      <div className={styles.appContainer}>
-        {menuItems.map((item) => (
-          <Item
-            name={item.name}
-            subdetails={item.subdetails}
-            price={item.price}
-          />
-        ))}
-      </div>
-      <div className={styles.title}>Desert</div>
-      <div className={styles.appContainer}>
-        {menuItems.map((item) => (
-          <Item
-            name={item.name}
-            subdetails={item.subdetails}
-            price={item.price}
-          />
-        ))}
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/:id?" element={<Home />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

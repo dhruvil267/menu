@@ -1,0 +1,23 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+.tableContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  justify-content: center;
+  margin-top: 20px;
+}

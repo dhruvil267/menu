@@ -1,0 +1,69 @@
+.showDialog {
+  border: 5px solid #0078d4;
+  width: max-content;
+  padding: 10px;
+  border-radius: 20px;
+  background: #dcdcdc;
+  font-size: 15px;
+  cursor: pointer;
+}
+.buttonDialog {
+  display: flex;
+  justify-content: flex-end;
+}
+.text {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 22px;
+  margin: 0px;
+}
+.inputText {
+  padding: 3px;
+  font-family: cursive;
+  border-radius: 10px;
+  margin-left: 12px;
+}
+.dialogContainer {
+  border-radius: 8px;
+  background-color: #9fcff9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px;
+  height: -webkit-fill-available;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.allergyText {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  margin: 0px;
+  display: flex;
+  padding: 10px;
+}
+.actionButtons {
+  display: flex;
+  gap: 100px;
+}
+.infoDiv {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+}
+.dialogContainer {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: transparent transparent; /* Firefox */
+}
+
+.dialogContainer::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as needed */
+}
+
+.dialogContainer::-webkit-scrollbar-track {
+  background: transparent; /* Set to the same color as your background */
+}
+
+.dialogContainer::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set to the same color as your background */
+  border: none; /* Optional: remove the border for a cleaner look */
+}

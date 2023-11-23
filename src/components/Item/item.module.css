@@ -47,3 +47,9 @@
   font-weight: 600;
   color: black;
 }
+.priceContainer {
+  gap: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}

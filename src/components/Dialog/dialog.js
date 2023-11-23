@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "./dialog.module.css";
-import Data from "../../services/Data"; 
+import Data from "../../services/Data";
 import Info from "../Info/info";
+import { useNavigate } from "react-router-dom";
 function Dialog() {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
 
   const dialogOpen = () => {
@@ -10,6 +12,9 @@ function Dialog() {
   };
   const dialogClose = () => {
     setVisible(false);
+  };
+  const clickPlace = () => {
+    navigate("/thankyou");
   };
   const itemInstance = new Data();
   const people = itemInstance.people();
@@ -24,10 +29,15 @@ function Dialog() {
           <p className={styles.showDialog}>Review Order</p>
         </fluent-button>
         {visible && (
-          <fluent-dialog id="defaultDialog" trap-focus modal style={{ width: '50vw' }}>
+          <fluent-dialog
+            id="defaultDialog"
+            trap-focus
+            modal
+            style={{ width: "50vw" }}
+          >
             <div className={styles.dialogContainer}>
               <p className={styles.text}>
-                Please Review your Order before Placing it!!!
+                Please Review your Order before Placing it!
               </p>
               <p className={styles.allergyText}>
                 If you have any Allergy, Please mention it here
@@ -46,7 +56,9 @@ function Dialog() {
                 >
                   <p className={styles.showDialog}>Back</p>
                 </fluent-button>
-                <p className={styles.showDialog}>Place Order</p>
+                <p className={styles.showDialog} onClick={clickPlace}>
+                  Place Order
+                </p>
               </div>
             </div>
           </fluent-dialog>

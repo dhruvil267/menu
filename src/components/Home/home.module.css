@@ -11,13 +11,12 @@
   justify-content: center;
   margin: 15px;
 }
-.tableContainer {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 16px;
-  font-weight: 600;
-  color: black;
-  justify-content: center;
-  margin-top: 20px;
+
+.homeContainer {
+  padding: 10px;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
 }

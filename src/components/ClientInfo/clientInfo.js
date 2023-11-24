@@ -7,6 +7,7 @@ import { useAppContext } from "../../AppContext";
 const ClientInfo = () => {
   const navigate = useNavigate();
   const { updateCustomerName } = useAppContext();
+  const { id } = useParams();
 
   const [name, setName] = useState("");
 
@@ -18,8 +19,13 @@ const ClientInfo = () => {
     updateCustomerName(name);
     navigate("/home");
   };
+  // const initialClientName = localStorage.getItem("inputValue") || "";
+  // const [name, setName] = useState(initialClientName);
 
-  const { id } = useParams();
+  // // Update the localStorage whenever the inputValue changes
+  // useEffect(() => {
+  //   localStorage.setItem("inputValue", name);
+  // }, [name]);
 
   return (
     <div className={styles.clientInfo}>

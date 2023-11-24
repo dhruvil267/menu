@@ -1,4 +1,9 @@
 .text {
   font-family: cursive;
   font-size: 15px;
+  display: flex;
+}
+.cross {
+  font-size: 10px;
+  font-weight: bold;
 }

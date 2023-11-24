@@ -1,12 +1,16 @@
 import React from "react";
-import styles from "./info.module.css"
+import styles from "./info.module.css";
+import { Icon } from "@fluentui/react";
+
 function Info(props) {
-  const { name, items } = props;
+  const { items, name, count, allergy } = props;
   return (
-    <div>
-      <span className={styles.text}>
-        {name}: <span>{items}</span>
+    <div className={styles.text}>
+      <span>
+        {name}: {count} <Icon iconName="Cancel" className={styles.cross} />{" "}
+        {items}
       </span>
+      {allergy?.trim() && <div>, (Allergy - {allergy})</div>}
     </div>
   );
 }

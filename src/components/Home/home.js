@@ -14,10 +14,8 @@ function Home() {
   const menuItemsMainCourse = itemInstance.menuItemsMainCourse();
   const menuItemsDessert = itemInstance.menuItemsDessert();
 
-
   return (
     <div className={styles.homeContainer}>
-      
       <div className={styles.title}>Appetizer</div>
       <div className={styles.appContainer}>
         {menuItemsAppetizer.map((item, idx) => (
@@ -35,7 +33,7 @@ function Home() {
         {menuItemsMainCourse.map((item, idx) => (
           <Item
             id={item.id}
-            key={menuItemsMainCourse.length + idx}
+            key={menuItemsAppetizer.length + idx}
             name={item.name}
             subdetails={item.subdetails}
             price={item.price}
@@ -47,7 +45,7 @@ function Home() {
         {menuItemsDessert.map((item, idx) => (
           <Item
             id={item.id}
-            key={2 * menuItemsDessert.length + idx}
+            key={menuItemsAppetizer.length + menuItemsMainCourse.length + idx}
             name={item.name}
             subdetails={item.subdetails}
             price={item.price}

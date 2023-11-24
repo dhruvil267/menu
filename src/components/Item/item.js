@@ -8,7 +8,7 @@ initializeIcons(); // This initializes the default set of Fluent UI icons
 
 function Item(props) {
   const { name, subdetails, price, id } = props;
-  const { updateItem, data } = useAppContext();
+  const { updateItem } = useAppContext();
 
   const [count, setCount] = useState(0);
 
@@ -22,8 +22,7 @@ function Item(props) {
       updateItem(id, name, count - 1);
     }
   };
-  let filterdata = data.filter((item) => item.count > 0);
-  console.log(filterdata);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.itemName}>

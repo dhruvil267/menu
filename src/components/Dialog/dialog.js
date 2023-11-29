@@ -3,6 +3,7 @@ import styles from "./dialog.module.css";
 import Info from "../Info/info";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
+import axios from "axios";
 
 function Dialog() {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ function Dialog() {
   const { data, updateAllergy } = useAppContext();
   const [allergy, setAllergy] = useState("");
   let filterdata = data.filter((item) => item.count > 0);
+  const apiUrl =
+    "https://7nljo5xu0j.execute-api.us-east-2.amazonaws.com/default/printOrderData";
 
   const dialogOpen = () => {
     setVisible(true);
@@ -17,9 +20,19 @@ function Dialog() {
   const dialogClose = () => {
     setVisible(false);
   };
-  const clickPlace = () => {
+  const clickPlace = async () => {
+    try {
+      // Assuming filteredData is an object containing the data you want to send
+      const response = await axios.post(apiUrl, filterdata);
+      // Handle the response as needed
+      console.log("API Response:", response.data);
+      navigate("/thankyou");
+    } catch (error) {
+      // Handle errors
+      console.error("Error sending data to the backend:", error);
+    }
     console.log(filterdata);
-    navigate("/thankyou");
+    // navigate("/thankyou");
   };
 
   const handleChange = (e) => {

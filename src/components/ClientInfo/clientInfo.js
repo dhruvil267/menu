@@ -3,12 +3,13 @@ import styles from "./clientInfo.module.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
+import { useLocation } from "react-router-dom";
 
 const ClientInfo = () => {
   const navigate = useNavigate();
   const { updateCustomerName } = useAppContext();
-  const { id } = useParams();
-
+  const location = useLocation();
+  const id = location.hash.replace("#/", "");
   const [name, setName] = useState("");
 
   const handleChange = (e) => {

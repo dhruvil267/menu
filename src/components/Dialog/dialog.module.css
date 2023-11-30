@@ -7,6 +7,8 @@
   font-size: 15px;
   cursor: pointer;
   margin: 15px;
+  font-family: auto;
+  color: black;
 }
 .buttonDialog {
   display: flex;
@@ -19,7 +21,7 @@
 }
 .inputText {
   padding: 3px;
-  font-family: cursive;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
   border-radius: 10px;
   margin-left: 12px;
 }

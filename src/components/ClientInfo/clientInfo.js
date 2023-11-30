@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./clientInfo.module.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
 import { useLocation } from "react-router-dom";
 
@@ -10,23 +9,23 @@ const ClientInfo = () => {
   const { updateCustomerName } = useAppContext();
   const location = useLocation();
   const id = location.hash.replace("#/", "");
-  const [name, setName] = useState("");
+  //const [name, setName] = useState("");
 
   const handleChange = (e) => {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     updateCustomerName(name);
     navigate("/home");
   };
-  // const initialClientName = localStorage.getItem("inputValue") || "";
-  // const [name, setName] = useState(initialClientName);
+  const initialClientName = localStorage.getItem("inputValue") || "";
+  const [name, setName] = useState(initialClientName);
 
-  // // Update the localStorage whenever the inputValue changes
-  // useEffect(() => {
-  //   localStorage.setItem("inputValue", name);
-  // }, [name]);
+  // Update the localStorage whenever the inputValue changes
+  useEffect(() => {
+    localStorage.setItem("inputValue", name);
+  }, [name]);
 
   return (
     <div className={styles.clientInfo}>

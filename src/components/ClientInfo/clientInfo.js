@@ -6,9 +6,11 @@ import { useLocation } from "react-router-dom";
 
 const ClientInfo = () => {
   const navigate = useNavigate();
-  const { updateCustomerName } = useAppContext();
+  const { updateCustomerName, updateTableNo } = useAppContext();
   const location = useLocation();
   const id = location.hash.replace("#/", "");
+  const initialClientName = localStorage.getItem("inputValue") || "";
+  const [name, setName] = useState(initialClientName);
   //const [name, setName] = useState("");
 
   const handleChange = (e) => {
@@ -16,11 +18,10 @@ const ClientInfo = () => {
   };
 
   const handleSubmit = () => {
+    updateTableNo(id);
     updateCustomerName(name);
     navigate("/home");
   };
-  const initialClientName = localStorage.getItem("inputValue") || "";
-  const [name, setName] = useState(initialClientName);
 
   // Update the localStorage whenever the inputValue changes
   useEffect(() => {

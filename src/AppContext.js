@@ -8,8 +8,14 @@ export const useAppContext = () => {
 };
 
 const AppContextProvider = ({ children }) => {
+  // const[appContext,updateAppContext]=useState({
+  //   data:[],
+  //   customerName:"",
+  //   tableNo:""
+  // });
   const [data, setData] = useState([]);
   const [customerName, setcustomerName] = useState();
+  const [tableNo, setTableNo] = useState();
 
   const updateAllergy = (allergy) => {
     setData((prevData) =>
@@ -21,6 +27,9 @@ const AppContextProvider = ({ children }) => {
   };
   const updateCustomerName = (customerName) => {
     setcustomerName(customerName);
+  };
+  const updateTableNo = (tableNo) => {
+    setTableNo(tableNo);
   };
 
   const updateItem = (itemId, name, newCount) => {
@@ -38,7 +47,6 @@ const AppContextProvider = ({ children }) => {
       // If the item doesn't exist and count is greater than 0, add the new item
       const newItem = {
         id: itemId,
-        customerName: customerName,
         name: name,
         count: newCount,
       };
@@ -48,7 +56,15 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ data, updateItem, updateCustomerName, updateAllergy }}
+      value={{
+        data,
+        tableNo,
+        updateTableNo,
+        customerName,
+        updateCustomerName,
+        updateItem,
+        updateAllergy,
+      }}
     >
       {children}
     </AppContext.Provider>

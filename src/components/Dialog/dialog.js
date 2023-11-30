@@ -8,9 +8,12 @@ import axios from "axios";
 function Dialog() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
-  const { data, updateAllergy } = useAppContext();
+  const { data, updateAllergy, tableNo, customerName } = useAppContext();
   const [allergy, setAllergy] = useState("");
   let filterdata = data.filter((item) => item.count > 0);
+  let allInfo = [
+    { tableNo: tableNo, customerName: customerName, itemSelected: filterdata },
+  ];
   const apiUrl =
     "https://7nljo5xu0j.execute-api.us-east-2.amazonaws.com/default/printOrderData";
 
@@ -23,7 +26,7 @@ function Dialog() {
   const clickPlace = async () => {
     try {
       // Assuming filteredData is an object containing the data you want to send
-      const response = await axios.post(apiUrl, filterdata);
+      const response = await axios.post(apiUrl, allInfo);
       // Handle the response as needed
       console.log("API Response:", response.data);
       navigate("/thankyou");
@@ -31,7 +34,8 @@ function Dialog() {
       // Handle errors
       console.error("Error sending data to the backend:", error);
     }
-    console.log(filterdata);
+    console.log(allInfo);
+
     // navigate("/thankyou");
   };
 
@@ -67,7 +71,6 @@ function Dialog() {
                 {filterdata.map((item, idx) => (
                   <Info
                     key={idx}
-                    name={item.customerName}
                     items={item.name}
                     count={item.count}
                     allergy={allergy}

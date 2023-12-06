@@ -122,29 +122,4 @@ export default class Data {
     ];
     return items;
   };
-  people = () => {
-    let numOfPeople = [
-      {
-        name: "Dhruvil",
-        items:
-          "In publishing and graphic designIn publishing and graphic design",
-      },
-      {
-        name: "Dhruvil",
-        items:
-          "In publishing and graphic designIn publishing and graphic design",
-      },
-      {
-        name: "Dhruvil",
-        items:
-          "In publishing and graphic designIn publishing and graphic design",
-      },
-      {
-        name: "Dhruvil",
-        items:
-          "In publishing and graphic designIn publishing and graphic design",
-      },
-    ];
-    return numOfPeople;
-  };
 }

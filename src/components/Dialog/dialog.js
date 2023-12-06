@@ -3,40 +3,51 @@ import styles from "./dialog.module.css";
 import Info from "../Info/info";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
-import axios from "axios";
-
 function Dialog() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const { data, updateAllergy, tableNo, customerName } = useAppContext();
   const [allergy, setAllergy] = useState("");
+
   let filterdata = data.filter((item) => item.count > 0);
   let allInfo = [
     { tableNo: tableNo, customerName: customerName, itemSelected: filterdata },
   ];
-  const apiUrl =
-    "https://7nljo5xu0j.execute-api.us-east-2.amazonaws.com/default/printOrderData";
 
+  const nodeApiUrl =
+    "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
   const dialogOpen = () => {
     setVisible(true);
   };
   const dialogClose = () => {
     setVisible(false);
   };
+
   const clickPlace = async () => {
     try {
-      // Assuming filteredData is an object containing the data you want to send
-      const response = await axios.post(apiUrl, allInfo);
-      // Handle the response as needed
-      console.log("API Response:", response.data);
-      navigate("/thankyou");
-    } catch (error) {
-      // Handle errors
-      console.error("Error sending data to the backend:", error);
-    }
-    console.log(allInfo);
+      // Ensure allInfo is defined before sending the request
+      if (!allInfo) {
+        console.error("Print data is missing.");
+        return;
+      }
 
-    // navigate("/thankyou");
+      const response = await fetch(`${nodeApiUrl}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ allInfo }),
+      });
+      navigate("/thankyou");
+
+      if (response.ok) {
+        console.log("Print job initiated successfully");
+      } else {
+        console.error("Error initiating print job:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
   };
 
   const handleChange = (e) => {

@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { initializeIcons } from "@fluentui/react/lib/Icons";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@fluentui/react";
 import styles from "./item.module.css";
 import { useAppContext } from "../../AppContext";
 
-initializeIcons(); // This initializes the default set of Fluent UI icons
 
 function Item(props) {
   const { name, subdetails, price, id } = props;
-  const { updateItem } = useAppContext();
-
+  const { updateItem, data } = useAppContext();
   const [count, setCount] = useState(0);
-
+  useEffect(() => {
+    let currentItem = data.find((item) => item.id === id);
+    if (currentItem) {
+      setCount(currentItem.count);
+    }
+  }, [data, id]);
   const increment = () => {
     setCount(count + 1);
     updateItem(id, name, count + 1);

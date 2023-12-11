@@ -21,7 +21,7 @@ const AppContextProvider = ({ children }) => {
     setData((prevData) =>
       prevData.map((item) => ({
         ...item,
-        allergy: allergy,
+        allergy: allergy.trim(),
       }))
     );
   };

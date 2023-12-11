@@ -5,6 +5,8 @@ import Home from "./components/Home/home";
 import ThankYou from "./components/ThankYou/thankyou";
 import ClientInfo from "./components/ClientInfo/clientInfo";
 import AppContextProvider from "./AppContext";
+import { initializeIcons } from "@fluentui/react/lib/Icons";
+initializeIcons(); // This initializes the default set of Fluent UI icons
 
 const App = () => {
   return (

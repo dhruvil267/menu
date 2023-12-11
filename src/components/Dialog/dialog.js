@@ -10,8 +10,18 @@ function Dialog() {
   const [allergy, setAllergy] = useState("");
 
   let filterdata = data.filter((item) => item.count > 0);
+  const updatedInfo = filterdata.map(item => {
+    // Check if the 'allergy' property exists and is a string
+    if (typeof item.allergy === 'string' && item.allergy.trim() === '') {
+      // If it's an empty string after trimming, create a new object without the 'allergy' property
+      const { allergy, ...itemWithoutAllergy } = item;
+      return itemWithoutAllergy;
+    }
+    // If 'allergy' is not an empty string or not a string, leave the object as is
+    return item;
+  });
   let allInfo = [
-    { tableNo: tableNo, customerName: customerName, itemSelected: filterdata },
+    { tableNo: tableNo, customerName: customerName, itemSelected: updatedInfo },
   ];
 
   const nodeApiUrl =
@@ -24,6 +34,8 @@ function Dialog() {
   };
 
   const clickPlace = async () => {
+    console.log(allInfo)
+
     try {
       // Ensure allInfo is defined before sending the request
       if (!allInfo) {
@@ -82,6 +94,7 @@ function Dialog() {
                 {filterdata.map((item, idx) => (
                   <Info
                     key={idx}
+                    id={item.id}
                     items={item.name}
                     count={item.count}
                     allergy={allergy}

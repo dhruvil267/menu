@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./customerRepresentative.module.css";
 import { Icon } from "@fluentui/react";
+import { useAppContext } from "../../AppContext";
 
 function CustomerRepresentative({ helpBool }) {
+  const { tableNo, customerName } = useAppContext();
   const nodeApiUrl =
     "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
   let allInfo = [
-    {
-      needHelp: true,
-    },
+    { tableNo: tableNo, customerName: customerName, needHelp: true },
   ];
   const handleCustomer = async () => {
     try {

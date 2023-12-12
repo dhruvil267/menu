@@ -17,14 +17,6 @@ const AppContextProvider = ({ children }) => {
   const [customerName, setcustomerName] = useState();
   const [tableNo, setTableNo] = useState();
 
-  const updateAllergy = (allergy) => {
-    setData((prevData) =>
-      prevData.map((item) => ({
-        ...item,
-        allergy: allergy.trim(),
-      }))
-    );
-  };
   const updateCustomerName = (customerName) => {
     setcustomerName(customerName);
   };
@@ -63,7 +55,6 @@ const AppContextProvider = ({ children }) => {
         customerName,
         updateCustomerName,
         updateItem,
-        updateAllergy,
       }}
     >
       {children}

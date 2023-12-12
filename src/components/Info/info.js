@@ -4,7 +4,7 @@ import styles from "./info.module.css";
 import { Icon } from "@fluentui/react";
 
 function Info(props) {
-  const { items, count, allergy, id } = props;
+  const { items, count, id } = props;
   const { updateItem } = useAppContext();
 
 
@@ -22,7 +22,6 @@ function Info(props) {
         <span>
           {count} <Icon iconName="Cancel" className={styles.cross} /> {items}
         </span>
-        {allergy?.trim() && <div>, (Allergy - {allergy})</div>}
       </div>
       <div className={styles.countContainer}>
         <Icon iconName="Remove" onClick={decrement} className={styles.minus} />

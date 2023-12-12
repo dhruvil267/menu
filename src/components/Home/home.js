@@ -6,6 +6,7 @@ import {
   fluentDialog,
 } from "@fluentui/web-components";
 import Dialog from "../Dialog/dialog";
+import CustomerRepresentative from "../CustomerRespresentative/customerRepresentative";
 
 provideFluentDesignSystem().register(fluentDialog());
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
+      <CustomerRepresentative />
       <div className={styles.title}>Appetizer</div>
       <div className={styles.appContainer}>
         {menuItemsAppetizer.map((item, idx) => (

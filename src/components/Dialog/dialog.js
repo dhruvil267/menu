@@ -6,23 +6,20 @@ import { useAppContext } from "../../AppContext";
 function Dialog() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
-  const { data, updateAllergy, tableNo, customerName } = useAppContext();
+  const { data, tableNo, customerName } = useAppContext();
   const [allergy, setAllergy] = useState("");
 
   let filterdata = data.filter((item) => item.count > 0);
-  const updatedInfo = filterdata.map(item => {
-    // Check if the 'allergy' property exists and is a string
-    if (typeof item.allergy === 'string' && item.allergy.trim() === '') {
-      // If it's an empty string after trimming, create a new object without the 'allergy' property
-      const { allergy, ...itemWithoutAllergy } = item;
-      return itemWithoutAllergy;
-    }
-    // If 'allergy' is not an empty string or not a string, leave the object as is
-    return item;
-  });
+  
   let allInfo = [
-    { tableNo: tableNo, customerName: customerName, itemSelected: updatedInfo },
+    {
+      tableNo: tableNo,
+      customerName: customerName,
+      ...(allergy.trim() !== "" ? { allergy: allergy.trim() } : {}),
+      itemSelected: filterdata,
+    },
   ];
+  
 
   const nodeApiUrl =
     "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
@@ -34,7 +31,7 @@ function Dialog() {
   };
 
   const clickPlace = async () => {
-    console.log(allInfo)
+    console.log(allInfo);
 
     try {
       // Ensure allInfo is defined before sending the request
@@ -64,7 +61,6 @@ function Dialog() {
 
   const handleChange = (e) => {
     setAllergy(e.target.value);
-    updateAllergy(e.target.value);
   };
   return (
     <div>
@@ -83,7 +79,7 @@ function Dialog() {
                 Please Review your Order before Placing it!
               </p>
               <p className={styles.allergyText}>
-                If you have any Allergy, Please mention it here
+                If you have any Allergy or special requirements, Please mention it here
                 <input
                   className={styles.inputText}
                   onChange={handleChange}
@@ -97,7 +93,6 @@ function Dialog() {
                     id={item.id}
                     items={item.name}
                     count={item.count}
-                    allergy={allergy}
                   />
                 ))}
               </div>

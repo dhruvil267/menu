@@ -1,0 +1,13 @@
+.containerStyle {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  border: 3px solid #0078d4;
+  width: fit-content;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+  background-color: #dcdcdc;
+  position: fixed;
+  top: 20px;
+}

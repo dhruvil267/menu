@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import styles from "./dialog.module.css";
 import Info from "../Info/info";
-import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
-function Dialog() {
-  const navigate = useNavigate();
+function Dialog({ thankYouBool }) {
   const [visible, setVisible] = useState(false);
   const { data, tableNo, customerName } = useAppContext();
   const [allergy, setAllergy] = useState("");
 
   let filterdata = data.filter((item) => item.count > 0);
-  
+
   let allInfo = [
     {
       tableNo: tableNo,
@@ -19,7 +17,6 @@ function Dialog() {
       itemSelected: filterdata,
     },
   ];
-  
 
   const nodeApiUrl =
     "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
@@ -31,8 +28,6 @@ function Dialog() {
   };
 
   const clickPlace = async () => {
-    console.log(allInfo);
-
     try {
       // Ensure allInfo is defined before sending the request
       if (!allInfo) {
@@ -47,10 +42,10 @@ function Dialog() {
         },
         body: JSON.stringify({ allInfo }),
       });
-      navigate("/thankyou");
 
       if (response.ok) {
         console.log("Print job initiated successfully");
+        thankYouBool(true);
       } else {
         console.error("Error initiating print job:", response.statusText);
       }
@@ -79,7 +74,8 @@ function Dialog() {
                 Please Review your Order before Placing it!
               </p>
               <p className={styles.allergyText}>
-                If you have any Allergy or special requirements, Please mention it here
+                If you have any Allergy or special requirements, Please mention
+                it here
                 <input
                   className={styles.inputText}
                   onChange={handleChange}

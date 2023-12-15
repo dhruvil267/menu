@@ -60,13 +60,15 @@ function Dialog({ thankYouBool }) {
   return (
     <div>
       <div className={styles.buttonDialog}>
-        <fluent-button
-          appearance="accent"
-          id="dialogOpener"
-          onClick={dialogOpen}
-        >
-          <p className={styles.showDialog}>Review Order</p>
-        </fluent-button>
+        <div className={styles.dialogOpener}>
+          <fluent-button
+            appearance="accent"
+            id="dialogOpener"
+            onClick={dialogOpen}
+          >
+            <p className={styles.showDialog}>Review Order</p>
+          </fluent-button>
+        </div>
         {visible && (
           <fluent-dialog id="defaultDialog" trap-focus modal>
             <div className={styles.dialogContainer}>

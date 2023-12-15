@@ -10,7 +10,7 @@
   font-family: auto;
   color: black;
 }
-#dialogOpener{
+.dialogOpener{
   position: fixed;
   bottom: 5px;
 }

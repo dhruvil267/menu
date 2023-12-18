@@ -6,7 +6,7 @@ import { useAppContext } from "../../AppContext";
 function CustomerRepresentative({ helpBool }) {
   const { tableNo, customerName } = useAppContext();
   const nodeApiUrl =
-    "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
+    "https://lsizpwqao4.execute-api.us-east-2.amazonaws.com/default/madamely";
   let allInfo = [
     { tableNo: tableNo, customerName: customerName, needHelp: true },
   ];

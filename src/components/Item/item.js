@@ -29,7 +29,7 @@ function Item(props) {
     <div className={styles.wrapper}>
       <div className={styles.itemName}>
         <p className={styles.header}>{name}</p>
-        <p className={styles.subtext}>{subdetails}</p>
+        {subdetails&&<p className={styles.subtext}>{subdetails}</p>}
       </div>
       <div className={styles.priceContainer}>
         <p className={styles.price}>${price}</p>

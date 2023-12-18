@@ -39,7 +39,7 @@ function CustomerRepresentative({ helpBool }) {
   return (
     <div className={styles.containerStyle} onClick={handleCustomer}>
       <Icon iconName="Telemarketer" className={styles.icon} />
-      <span className={styles.representative}>Help</span>
+      <span className={styles.representative}>Aide</span>
     </div>
   );
 }

@@ -31,7 +31,7 @@ const ClientInfo = () => {
   return (
     <div className={styles.clientInfo}>
       <div className={styles.nameInputContainer}>
-        <h2>Welcome to XYZ</h2>
+        <h2>Bienvenue chez Madame Ly</h2>
         {id && (
           <div className={styles.tableContainer}>
             <span>Table No:</span>
@@ -40,7 +40,7 @@ const ClientInfo = () => {
         )}
         <form onSubmit={handleSubmit}>
           <span className={styles.nameText}>
-            Name:
+            Nom:
             <input
               type="text"
               value={name}
@@ -54,7 +54,7 @@ const ClientInfo = () => {
             className={styles.submitButton}
             disabled={name?.trim().length === 0}
           >
-            Next
+            Suivante
           </button>
         </form>
       </div>

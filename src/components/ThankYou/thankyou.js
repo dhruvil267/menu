@@ -6,14 +6,16 @@ function Thankyou(props) {
     <div className={styles.containerStyle}>
       {!help ? (
         <div>
-          <p className={styles.font30px}>Thank you for placing the order! </p>
-          <p className={styles.font25px}>Your order will be ready soon!!!</p>
+          <p className={styles.font30px}>Merci d'avoir passé la commande ! </p>
+          <p className={styles.font25px}>
+            Votre commande sera bientôt prête !!!
+          </p>
         </div>
       ) : (
         <div>
-          <p className={styles.font30px}>Thank you for waiting! </p>
+          <p className={styles.font30px}>Merci pour l'attente! </p>
           <p className={styles.font25px}>
-            Someone will be here to assist you shortly!!!
+            Quelqu'un sera là pour vous aider sous peu !!!
           </p>
         </div>
       )}

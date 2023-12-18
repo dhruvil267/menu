@@ -66,18 +66,18 @@ function Dialog({ thankYouBool }) {
             id="dialogOpener"
             onClick={dialogOpen}
           >
-            <p className={styles.showDialog}>Review Order</p>
+            <p className={styles.showDialog}>Réviser la commande</p>
           </fluent-button>
         </div>
         {visible && (
           <fluent-dialog id="defaultDialog" trap-focus modal>
             <div className={styles.dialogContainer}>
               <p className={styles.text}>
-                Please Review your Order before Placing it!
+                Veuillez vérifier votre commande avant de la passer !
               </p>
               <p className={styles.allergyText}>
-                If you have any Allergy or special requirements, Please mention
-                it here
+                Si vous avez des allergies ou des exigences particulières,
+                veuillez mentionner c'est ici
                 <input
                   className={styles.inputText}
                   onChange={handleChange}
@@ -100,14 +100,14 @@ function Dialog({ thankYouBool }) {
                   appearance="accent"
                   onClick={dialogClose}
                 >
-                  <p className={styles.showDialog}>Back</p>
+                  <p className={styles.showDialog}>Retour</p>
                 </fluent-button>
                 <button
                   className={styles.showDialog}
                   onClick={clickPlace}
                   disabled={filterdata.length === 0}
                 >
-                  Place Order
+                  Passer la commande
                 </button>
               </div>
             </div>

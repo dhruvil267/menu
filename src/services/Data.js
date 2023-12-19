@@ -60,7 +60,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   BÁNHMÌ = () => {
     let items = [
       {
@@ -101,7 +101,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   SAUTÉS = () => {
     let items = [
       {
@@ -284,23 +284,11 @@ export default class Data {
         subdetails: "Avec cari rouge au lait de coco, légumes et vermicelles",
         price: "20.95",
       },
-      {
-        id: 47,
-        name: "Jalebi",
-        subdetails: "Deep-fried pretzel-shaped dessert soaked in sugar syrup.",
-        price: "14",
-      },
-      {
-        id: 48,
-        name: "Gajar Ka Halwa",
-        subdetails: "Carrot-based sweet dessert pudding garnished with nuts.",
-        price: "16",
-      },
       // Add more Indian desserts as needed
     ];
     return items;
   };
-  
+
   SOUPES = () => {
     let items = [
       {
@@ -355,7 +343,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   REPASCOMBINES = () => {
     let items = [
       {
@@ -434,7 +422,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   GRILLADESAVECSALADE = () => {
     let items = [
       {
@@ -549,7 +537,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   SPECIALITÉS = () => {
     let items = [
       {
@@ -574,7 +562,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   REPASSIGNATUREMADAMELY = () => {
     let items = [
       {
@@ -591,12 +579,6 @@ export default class Data {
       },
       {
         id: 92,
-        name: "PAD THAI",
-        subdetails: "Inclus rouleau impérial et avec Arachides et Coriandre",
-        price: "17.95",
-      },
-      {
-        id: 93,
         name: "PAD THAI",
         subdetails: "Inclus rouleau impérial et avec Arachides et Coriandre",
         price: "17.95",
@@ -629,7 +611,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   SOUPETRIO = () => {
     let items = [
       {
@@ -660,7 +642,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   BÁNHMÌTRIO = () => {
     let items = [
       {
@@ -685,7 +667,7 @@ export default class Data {
     ];
     return items;
   };
-  
+
   DESSERTSETBREUVAGES = () => {
     let items = [
       {
@@ -712,5 +694,4 @@ export default class Data {
     ];
     return items;
   };
-  
 }

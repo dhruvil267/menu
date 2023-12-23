@@ -42,11 +42,12 @@ function Home() {
         <div className={styles.homeContainer}>
           <CustomerRepresentative helpBool={helpBool} />
           {menuItems.map((item) => (
-            <>
+            <div key={item.type}>
               <div className={styles.title}>{item.type}</div>
               <div className={styles.appContainer}>
                 {item.items.map((itm) => (
                   <Item
+                    key={itm.id}
                     id={itm.id}
                     name={itm.name}
                     subdetails={itm.subdetails}
@@ -54,7 +55,7 @@ function Home() {
                   />
                 ))}
               </div>
-            </>
+            </div>
           ))}
           {/* <div className={styles.title}>ENTREES</div>
           <div className={styles.appContainer}>

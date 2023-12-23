@@ -14,6 +14,8 @@ const AppContextProvider = ({ children }) => {
   //   tableNo:""
   // });
   const [data, setData] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
+
   const [customerName, setcustomerName] = useState();
   const [tableNo, setTableNo] = useState();
 
@@ -23,7 +25,9 @@ const AppContextProvider = ({ children }) => {
   const updateTableNo = (tableNo) => {
     setTableNo(tableNo);
   };
-
+  const updateMenuItems = (menuItems) => {
+    setMenuItems(menuItems);
+  };
   const updateItem = (itemId, name, newCount) => {
     // Find the item in the current data array
     const existingItem = data.find((item) => item.id === itemId);
@@ -50,6 +54,8 @@ const AppContextProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         data,
+        menuItems,
+        updateMenuItems,
         tableNo,
         updateTableNo,
         customerName,

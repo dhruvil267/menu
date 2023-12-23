@@ -9,24 +9,25 @@ import {
 import Dialog from "../Dialog/dialog";
 import CustomerRepresentative from "../CustomerRespresentative/customerRepresentative";
 import Thankyou from "../ThankYou/thankyou";
+import { useAppContext } from "../../AppContext";
 
 provideFluentDesignSystem().register(fluentDialog());
 function Home() {
   const [finalPageVisible, setFinalPageVisible] = useState(false);
   const [help, setHelp] = useState(false);
-
-  const itemInstance = new Data();
-  const ENTREES = itemInstance.ENTREES();
-  const BÁNHMÌ = itemInstance.BÁNHMÌ();
-  const SAUTÉS = itemInstance.SAUTÉS();
-  const SOUPES = itemInstance.SOUPES();
-  const REPASCOMBINES = itemInstance.REPASCOMBINES();
-  const GRILLADESAVECSALADE = itemInstance.GRILLADESAVECSALADE();
-  const SPECIALITÉS = itemInstance.SPECIALITÉS();
-  const REPASSIGNATUREMADAMELY = itemInstance.REPASSIGNATUREMADAMELY();
-  const SOUPETRIO = itemInstance.SOUPETRIO();
-  const BÁNHMÌTRIO = itemInstance.BÁNHMÌTRIO();
-  const DESSERTSETBREUVAGES = itemInstance.DESSERTSETBREUVAGES();
+  const { menuItems } = useAppContext();
+  // const itemInstance = new Data();
+  // const ENTREES = itemInstance.ENTREES();
+  // const BÁNHMÌ = itemInstance.BÁNHMÌ();
+  // const SAUTÉS = itemInstance.SAUTÉS();
+  // const SOUPES = itemInstance.SOUPES();
+  // const REPASCOMBINES = itemInstance.REPASCOMBINES();
+  // const GRILLADESAVECSALADE = itemInstance.GRILLADESAVECSALADE();
+  // const SPECIALITÉS = itemInstance.SPECIALITÉS();
+  // const REPASSIGNATUREMADAMELY = itemInstance.REPASSIGNATUREMADAMELY();
+  // const SOUPETRIO = itemInstance.SOUPETRIO();
+  // const BÁNHMÌTRIO = itemInstance.BÁNHMÌTRIO();
+  // const DESSERTSETBREUVAGES = itemInstance.DESSERTSETBREUVAGES();
 
   const thankYouBool = (thankYouBool) => {
     setFinalPageVisible(thankYouBool);
@@ -40,7 +41,22 @@ function Home() {
       {!finalPageVisible ? (
         <div className={styles.homeContainer}>
           <CustomerRepresentative helpBool={helpBool} />
-          <div className={styles.title}>ENTREES</div>
+          {menuItems.map((item) => (
+            <>
+              <div className={styles.title}>{item.type}</div>
+              <div className={styles.appContainer}>
+                {item.items.map((itm) => (
+                  <Item
+                    id={itm.id}
+                    name={itm.name}
+                    subdetails={itm.subdetails}
+                    price={itm.price}
+                  />
+                ))}
+              </div>
+            </>
+          ))}
+          {/* <div className={styles.title}>ENTREES</div>
           <div className={styles.appContainer}>
             {ENTREES.map((item, idx) => (
               <Item
@@ -234,7 +250,7 @@ function Home() {
                 price={item.price}
               />
             ))}
-          </div>
+          </div> */}
           <Dialog thankYouBool={thankYouBool} />
         </div>
       ) : (

@@ -8,15 +8,14 @@ export const useAppContext = () => {
 };
 
 const AppContextProvider = ({ children }) => {
-  // const[appContext,updateAppContext]=useState({
-  //   data:[],
-  //   customerName:"",
-  //   tableNo:""
-  // });
   const [data, setData] = useState([]);
   const [customerName, setcustomerName] = useState();
   const [tableNo, setTableNo] = useState();
+  const [menuItems, setMenuItems] = useState([]);
 
+  const updateMenuItems = (menuItems) => {
+    setMenuItems(menuItems);
+  };
   const updateCustomerName = (customerName) => {
     setcustomerName(customerName);
   };
@@ -55,6 +54,8 @@ const AppContextProvider = ({ children }) => {
         customerName,
         updateCustomerName,
         updateItem,
+        menuItems,
+        updateMenuItems,
       }}
     >
       {children}

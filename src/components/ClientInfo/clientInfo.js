@@ -6,12 +6,16 @@ import { useLocation } from "react-router-dom";
 
 const ClientInfo = () => {
   const navigate = useNavigate();
-  const { updateCustomerName, updateTableNo } = useAppContext();
+  const { updateCustomerName, updateTableNo, updateMenuItems } =
+    useAppContext();
   const location = useLocation();
-  const id = location.hash.replace("#/", "");
+  const hashParts = location.hash.split("/");
+
+  const tableName = hashParts[1];
+  const restaurantName = hashParts[2];
+  const id = hashParts[3];
   const initialClientName = localStorage.getItem("inputValue") || "";
   const [name, setName] = useState(initialClientName);
-  //const [name, setName] = useState("");
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -22,7 +26,40 @@ const ClientInfo = () => {
     updateCustomerName(name);
     navigate("/home");
   };
+  useEffect(() => {
+    const nodeApiUrl =
+      "https://mhz7s6nfke.execute-api.us-east-2.amazonaws.com/default/NodeBackend";
 
+    const urlWithQueryParam = `${nodeApiUrl}?tableName=${encodeURIComponent(
+      tableName
+    )}`;
+    fetch(urlWithQueryParam, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const organizedItems = {};
+        data.Items.forEach((item) => {
+          if (!organizedItems[item.type]) {
+            organizedItems[item.type] = [];
+          }
+          organizedItems[item.type].push(item);
+        });
+
+        let resultArray = Object.keys(organizedItems).map((type) => ({
+          type,
+          sequence: organizedItems[type][0].sequence,
+          items: organizedItems[type],
+        }));
+        resultArray = resultArray.sort((a, b) => a.sequence - b.sequence);
+        updateMenuItems(resultArray);
+      })
+      .catch((error) => console.error("Error:", error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // Update the localStorage whenever the inputValue changes
   useEffect(() => {
     localStorage.setItem("inputValue", name);
@@ -31,7 +68,7 @@ const ClientInfo = () => {
   return (
     <div className={styles.clientInfo}>
       <div className={styles.nameInputContainer}>
-        <h2>Welcome to XYZ</h2>
+        <h2>Welcome to {restaurantName}</h2>
         {id && (
           <div className={styles.tableContainer}>
             <span>Table No:</span>

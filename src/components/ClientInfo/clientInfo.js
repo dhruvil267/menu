@@ -9,11 +9,14 @@ const ClientInfo = () => {
   const { updateCustomerName, updateTableNo, updateMenuItems } =
     useAppContext();
   const location = useLocation();
-  const hashParts = location.hash.split("/");
+  const urlData = location.hash.split("/");
+  const base64 = urlData[1];
+  let decodedFragment = atob(base64);
+  decodedFragment=decodedFragment.split("/")
 
-  const tableName = hashParts[1];
-  const restaurantName = hashParts[2];
-  const id = hashParts[3];
+  const tableName = decodedFragment[1];
+  const restaurantName = decodedFragment[2];
+  const id = decodedFragment[3];
   const initialClientName = localStorage.getItem("inputValue") || "";
   const [name, setName] = useState(initialClientName);
 
